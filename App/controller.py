@@ -27,8 +27,8 @@ from ADT import map as map
 
 from DataStructures import listiterator as it
 from Sorting import mergesort as sort
-from time import time
-from time import process_time
+import time
+
 
 
 """

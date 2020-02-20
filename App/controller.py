@@ -27,8 +27,8 @@ from ADT import map as map
 
 from DataStructures import listiterator as it
 from Sorting import mergesort as sort
-import time
-
+from time import process_time
+from time import process_time_ns
 
 
 """
@@ -102,10 +102,10 @@ def loadData (catalog):
 
 
 def getBookInfo(catalog, bookTitle):
-    t1_start = time.time() #tiempo inicial
+    t1_start = process_time_ns() #tiempo inicial
     #book=model.getBookInList(catalog, bookTitle)
     book=model.getBookInMap(catalog, bookTitle)
-    t1_stop = time.time() #tiempo final
+    t1_stop = process_time_ns() #tiempo final
     print("Tiempo de ejecución buscar libro:",t1_stop-t1_start," segundos")   
     if book:
         return book

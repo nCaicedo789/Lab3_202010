@@ -65,7 +65,7 @@ def addMovieMap (catalog, row):
     """
     Adiciona libro al map con key=title
     """
-    books = catalog['Map']
+    books = catalog['MovieMap']
     book = newMovie(row)
     map.put(books, book['title'], book, compareByKey)
 

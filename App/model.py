@@ -98,7 +98,6 @@ def addDirector (catalog, row):
     else:
         author = newDirector(name, row, catalog)
         map.put(authors, author['name'], author, compareByKey)
-        print('en add director else')
 
 
 # Funciones de consulta

@@ -84,10 +84,11 @@ def newDirector (name, row, catalog):
         author['Movie_more_6']+=1
     return author
 
-def addDirector (catalog, name, row):
+def addDirector (catalog, row):
     """
     Adiciona un autor al map y sus libros
     """
+    name= row['director_name']
     if name:
         authors = catalog['Directors']
         author=map.get(authors,name,compareByKey)

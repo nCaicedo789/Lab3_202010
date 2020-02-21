@@ -58,7 +58,7 @@ def addMovieList (catalog, row):
     Adiciona libro a la lista
     """
     books = catalog['MovieList']
-    book = newBook(row)
+    book = newMovie(row)
     lt.addLast(books, book)
 
 def addMovieMap (catalog, row):

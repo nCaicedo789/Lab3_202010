@@ -89,16 +89,15 @@ def addDirector (catalog, row):
     Adiciona un autor al map y sus libros
     """
     name= row['director_name']
+    authors = catalog['Directors']
     if name== map.contains(catalog['Directors'],name,compareByKey):
-        authors = catalog['Directors']
         author=map.get(authors,name,compareByKey)
-        if author:
-            lt.addLast(author['DirectorMovies'],row['id'])
-            if map.get(catalog['MovieMap_id'],row['id'],compareByKey)['vote_average']>=6:
-                author['Movie_more_6']+=1
-        else:
-            author = newDirector(name, row, catalog)
-            map.put(authors, author['name'], author, compareByKey)
+        lt.addLast(author['DirectorMovies'],row['id'])
+        if map.get(catalog['MovieMap_id'],row['id'],compareByKey)['vote_average']>=6:
+            author['Movie_more_6']+=1
+    else:
+        author = newDirector(name, row, catalog)
+        map.put(authors, author['name'], author, compareByKey)
 
 
 # Funciones de consulta

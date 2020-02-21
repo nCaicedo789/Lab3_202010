@@ -74,7 +74,7 @@ while True:
         print ('Lista peliculas cargados: ' + str(lt.size(catalog['MovieList'])))
         print ('Actores cargados: ' + str(map.size(catalog['Actors'])))
         print ('Directores cargados: ' + str(map.size(catalog['Directors'])))
-        print(map.get(catalog['MovieMap_id'],735, model.compareByKey))
+        print(map.get(catalog['MovieMap_id'],1, model.compareByKey))
         
     elif int(inputs[0])==2:
         bookTitle = input("Nombre del libro a buscar: ")

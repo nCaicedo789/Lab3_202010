@@ -25,6 +25,7 @@ import controller
 import csv
 from ADT import list as lt
 from ADT import map as map
+import model
 
 from DataStructures import listiterator as it
 
@@ -73,7 +74,7 @@ while True:
         print ('Lista peliculas cargados: ' + str(lt.size(catalog['MovieList'])))
         print ('Actores cargados: ' + str(map.size(catalog['Actors'])))
         print ('Directores cargados: ' + str(map.size(catalog['Directors'])))
-        print(map.valueSet(catalog['MovieMap_title']))
+        print(map.get(catalog['MovieMap_id'],735, model.compareByKey))
         
     elif int(inputs[0])==2:
         bookTitle = input("Nombre del libro a buscar: ")

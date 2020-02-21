@@ -38,34 +38,35 @@ def newCatalog():
     """
     Inicializa el catálogo de peliculas. Retorna el catalogo inicializado.
     """
-    catalog = {'booksList':None, 'authors':None, 'booksMap': None}
-    catalog['booksList'] = lt.newList("ARRAY_LIST")
-    catalog['booksMap'] = map.newMap (5003, maptype='CHAINING')#10000 books
-    catalog['authors'] = map.newMap (12007, maptype='PROBING') #5841 authors
+    catalog = {'MovieList':None, 'Directors':None, 'MovieMap': None, 'Actors':None}
+    catalog['MovieList'] = lt.newList("ARRAY_LIST")
+    catalog['MovieMap'] = map.newMap (164531, maptype='CHAINING')#329044 books
+    catalog['Directors'] = map.newMap (45767, maptype='CHAINING') #85929 authors
+    catalog['Actors'] = map.newMap(130439,maptype='CHAINING')# 260861 actors
     return catalog
 
 
-def newBook (row):
+def newMovie (row):
     """
     Crea una nueva estructura para almacenar los actores de una pelicula 
     """
-    book = {"book_id": row['book_id'], "title":row['title'], "average_rating":row['average_rating'], "ratings_count":row['ratings_count']}
+    book = {"id": row['id'], "genres":row['genres'], "title":row['title'], "vote_average":row['vote_average']}
     return book
 
-def addBookList (catalog, row):
+def addMovieList (catalog, row):
     """
     Adiciona libro a la lista
     """
-    books = catalog['booksList']
+    books = catalog['MovieList']
     book = newBook(row)
     lt.addLast(books, book)
 
-def addBookMap (catalog, row):
+def addMovieMap (catalog, row):
     """
     Adiciona libro al map con key=title
     """
-    books = catalog['booksMap']
-    book = newBook(row)
+    books = catalog['Map']
+    book = newMovie(row)
     map.put(books, book['title'], book, compareByKey)
 
 def newAuthor (name, row):

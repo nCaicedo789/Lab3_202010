@@ -60,24 +60,25 @@ def loadBooks (catalog, sep=','):
     referencia al libro que se esta procesando.
     """
     t1_start = process_time() #tiempo inicial
-    booksfile = cf.data_dir + 'GoodReads/books.csv'
+    booksfile = cf.data_dir + 'GoodReads/AllMoviesDetailsCleaned.csv'
     dialect = csv.excel()
     dialect.delimiter=sep
-    with open(booksfile, encoding="utf-8") as csvfile:
+    with open(booksfile, encoding="utf-8-sig") as csvfile:
         spamreader = csv.DictReader(csvfile, dialect=dialect)
         for row in spamreader: 
             # Se adiciona el libro a la lista de libros
-            model.addBookList(catalog, row)
+            model.addMovieList(catalog, row)
             # Se adiciona el libro al mapa de libros (key=title)
             model.addBookMap(catalog, row)
             # Se obtienen los autores del libro
-            authors = row['authors'].split(",")
+            #authors = row['authors'].split(",")
             # Cada autor, se crea en la lista de autores del catalogo, y se 
             # adiciona un libro en la lista de dicho autor (apuntador al libro)
-            for author in authors:
-                model.addAuthor (catalog, author.strip(), row)
+            #for author in authors:
+                #model.addAuthor (catalog, author.strip(), row)
     t1_stop = process_time() #tiempo final
-    print("Tiempo de ejecución carga libros:",t1_stop-t1_start," segundos")   
+    print("Tiempo de ejecución carga libros:",t1_stop-t1_start," segundos")  
+
 
 
 

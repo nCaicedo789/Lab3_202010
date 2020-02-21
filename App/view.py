@@ -69,7 +69,7 @@ while True:
         print("Cargando información de los archivos ....")
         catalog = initCatalog ()
         loadData (catalog)
-        print ('Mapa peliculas cargados: ' + str(map.size(catalog['MovieMap'])))
+        print ('Mapa peliculas cargados: ' + str(map.size(catalog['MovieMap_title'])))
         print ('Lista peliculas cargados: ' + str(lt.size(catalog['MovieList'])))
         print ('Actores cargados: ' + str(map.size(catalog['Actors'])))
         print ('Directores cargados: ' + str(map.size(catalog['Directors'])))

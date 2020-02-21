@@ -77,8 +77,25 @@ def loadBooks (catalog, sep=','):
             #for author in authors:
                 #model.addAuthor (catalog, author.strip(), row)
     t1_stop = process_time() #tiempo final
-    print("Tiempo de ejecución carga libros:",t1_stop-t1_start," segundos")  
+    print("Tiempo de ejecución carga libros:",t1_stop-t1_start," segundos") 
 
+def loadDirector (catalog, sep=','):
+    """
+    Carga los libros del archivo.  Por cada libro se toman sus autores y por 
+    cada uno de ellos, se crea en la lista de autores, a dicho autor y una
+    referencia al libro que se esta procesando.
+    """
+    t1_start = process_time() #tiempo inicial
+    booksfile = cf.data_dir + 'GoodReads/AllMoviesCastingRaw.csv'
+    dialect = csv.excel()
+    dialect.delimiter=';'
+    with open(booksfile, encoding="utf-8-sig") as csvfile:
+        spamreader = csv.DictReader(csvfile, dialect=dialect)
+        for row in spamreader: 
+            # Se adiciona el libro a la lista de libros
+            model.addDirector(catalog, row)
+    t1_stop = process_time() #tiempo final
+    print("Tiempo de ejecución carga libros:",t1_stop-t1_start," segundos")
 
 
 
@@ -97,6 +114,7 @@ def loadData (catalog):
     estructura de datos
     """
     loadBooks(catalog)
+    loadDirector(catalog)
     
 
 # Funciones llamadas desde la vista y enviadas al modelo

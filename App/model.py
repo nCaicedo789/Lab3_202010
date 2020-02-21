@@ -40,7 +40,8 @@ def newCatalog():
     """
     catalog = {'MovieList':None, 'Directors':None, 'MovieMap': None, 'Actors':None}
     catalog['MovieList'] = lt.newList("ARRAY_LIST")
-    catalog['MovieMap'] = map.newMap (164531, maptype='CHAINING')#329044 books
+    catalog['MovieMap_title'] = map.newMap (164531, maptype='CHAINING')#329044 books
+    catalog['MovieMap_id'] = map.newMap (164531, maptype='CHAINING')#329044 books
     catalog['Directors'] = map.newMap (45767, maptype='CHAINING') #85929 authors
     catalog['Actors'] = map.newMap(130439,maptype='CHAINING')# 260861 actors
     return catalog
@@ -65,33 +66,37 @@ def addMovieMap (catalog, row):
     """
     Adiciona libro al map con key=title
     """
-    books = catalog['MovieMap']
+    books = catalog['MovieMap_title']
+    books_id= catalog['MovieMap_id']
     book = newMovie(row)
     map.put(books, book['title'], book, compareByKey)
+    map.put(books_id, book['id'], book, compareByKey)
 
-def newAuthor (name, row):
+def newDirector (name, row, catalog):
     """
     Crea una nueva estructura para modelar un autor y sus libros
     """
-    author = {'name':"", "authorBooks":None,  "sum_average_rating":0}
-    author ['name'] = name
-    author['sum_average_rating'] = float(row['average_rating'])
-    author ['authorBooks'] = lt.newList('SINGLE_LINKED')
-    lt.addLast(author['authorBooks'],row['book_id'])
+    author = {'name':"", "DirectorMovies":None,  "Movie_more_6":0}
+    author ['director_name'] = name
+    author ['DirectorMovies'] = lt.newList('SINGLE_LINKED')
+    lt.addLast(author['DirectorMovies'],row['id'])
+    if map.get(catalog['MovieMap_id'],row['id'],compareByKey)['vote_average']>=6:
+        author['Movie_more_6']+=1
     return author
 
-def addAuthor (catalog, name, row):
+def addDirector (catalog, name, row):
     """
     Adiciona un autor al map y sus libros
     """
     if name:
-        authors = catalog['authors']
+        authors = catalog['Directors']
         author=map.get(authors,name,compareByKey)
         if author:
-            lt.addLast(author['authorBooks'],row['book_id'])
-            author['sum_average_rating'] += float(row['average_rating'])
+            lt.addLast(author['DirectorMovies'],row['id'])
+            if map.get(catalog['MovieMap_id'],row['id'],compareByKey)['vote_average']>=6:
+                author['Movie_more_6']+=1
         else:
-            author = newAuthor(name, row)
+            author = newDirector(name, row, catalog)
             map.put(authors, author['name'], author, compareByKey)
 
 

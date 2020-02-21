@@ -69,7 +69,7 @@ def loadBooks (catalog, sep=','):
             # Se adiciona el libro a la lista de libros
             model.addMovieList(catalog, row)
             # Se adiciona el libro al mapa de libros (key=title)
-            model.addBookMap(catalog, row)
+            model.addMovieMap(catalog, row)
             # Se obtienen los autores del libro
             #authors = row['authors'].split(",")
             # Cada autor, se crea en la lista de autores del catalogo, y se 

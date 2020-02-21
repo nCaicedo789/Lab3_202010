@@ -80,7 +80,7 @@ def newDirector (name, row, catalog):
     author ['director_name'] = name
     author ['DirectorMovies'] = lt.newList('SINGLE_LINKED')
     lt.addLast(author['DirectorMovies'],row['id'])
-    if float(map.get(catalog['MovieMap_id'],row['id'],compareByKey)['vote_average'])>=6:
+    if float(map.get(catalog['MovieMap_id'],row['id'],compareByTitle)['vote_average'])>=6:
         author['Movie_more_6']+=1
     return author
 
@@ -90,14 +90,14 @@ def addDirector (catalog, row):
     """
     name= row['director_name']
     authors = catalog['Directors']
-    if name== map.contains(catalog['Directors'],name,compareByKey):
+    if name== map.contains(catalog['Directors'],name,compareByTitle):
         author=map.get(authors,name,compareByKey)
         lt.addLast(author['DirectorMovies'],row['id'])
-        if map.get(catalog['MovieMap_id'],row['id'],compareByKey)['vote_average']>=6:
+        if map.get(catalog['MovieMap_id'],row['id'],compareByTitle)['vote_average']>=6:
             map.get(author, name,compareByKey)['Movie_more_6']+=1
     else:
         author = newDirector(name, row, catalog)
-        map.put(authors, author['name'], author, compareByKey)
+        map.put(authors, author['name'], author, compareByTitle)
 
 
 # Funciones de consulta

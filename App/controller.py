@@ -62,7 +62,7 @@ def loadBooks (catalog, sep=','):
     t1_start = process_time() #tiempo inicial
     booksfile = cf.data_dir + 'GoodReads/AllMoviesDetailsCleaned.csv'
     dialect = csv.excel()
-    dialect.delimiter=sep
+    dialect.delimiter=';'
     with open(booksfile, encoding="utf-8") as csvfile:
         spamreader = csv.DictReader(csvfile, dialect=dialect)
         for row in spamreader: 

@@ -89,7 +89,7 @@ def addDirector (catalog, row):
     Adiciona un autor al map y sus libros
     """
     name= row['director_name']
-    if name:
+    if name== map.contains(catalog['Directors'],name,compareByKey):
         authors = catalog['Directors']
         author=map.get(authors,name,compareByKey)
         if author:

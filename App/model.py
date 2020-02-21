@@ -50,7 +50,7 @@ def newMovie (row):
     """
     Crea una nueva estructura para almacenar los actores de una pelicula 
     """
-    book = {"Movie_id": row['Movie_id'], "genres":row['genres'], "title":row['title'], "vote_average":row['vote_average']}
+    book = { "genres":row['genres'], "title":row['title'], "vote_average":row['vote_average']}
     return book
 
 def addMovieList (catalog, row):

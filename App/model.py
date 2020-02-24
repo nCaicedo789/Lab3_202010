@@ -94,7 +94,7 @@ def addDirector (catalog, row):
         author_1=map.get(catalog['Directors'],name,compareByKey)
         lt.addLast(author_1['DirectorMovies'],row['id'])
         if float(map.get(catalog['MovieMap_id'],row['id'],compareByKey)['vote_average'])>=6:
-            map.get(author_1, name,compareByKey)['Movie_more_6']+=1
+            map.get(catalog['Directors'], name,compareByKey)['Movie_more_6']+=1
     else:
         author_2 = newDirector(name, row, catalog)
         map.put(catalog['Directors'], author_2['name'], author_2, compareByKey)

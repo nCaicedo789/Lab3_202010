@@ -77,10 +77,11 @@ def newDirector (name, row, catalog):
     """
     Crea una nueva estructura para modelar un autor y sus libros
     """
-    author = {'name':"", "DirectorMovies":None,  "Movie_more_6":0, 'id':0}
+    author = {'name':"", "DirectorMovies":None,  "Movie_more_6":0, 'id':0, 'sum_aver':0}
     author['id']= row['id']
     author ['name'] = name
     author ['DirectorMovies'] = lt.newList('SINGLE_LINKED')
+    author['sum_aver']+= float(map.get(catalog['MovieMap_id'],row['id'],compareByKey)['vote_average'])
     lt.addLast(author['DirectorMovies'],row['id'])
     if float(map.get(catalog['MovieMap_id'],row['id'],compareByKey)['vote_average'])>=6:
         author['Movie_more_6']+=1
@@ -95,8 +96,9 @@ def addDirector_name (catalog, row):
     if map.contains(catalog['Directors_name'],name, compareByKey):
         author_1=map.get(catalog['Directors_name'],name,compareByKey)
         lt.addLast(author_1['DirectorMovies'],row['id'])
+        author_1['sum_aver']+= float(map.get(catalog['MovieMap_id'],row['id'],compareByKey)['vote_average'])
         if float(map.get(catalog['MovieMap_id'],row['id'],compareByKey)['vote_average'])>=6:
-            map.get(catalog['Directors_name'], name,compareByKey)['Movie_more_6']+=1
+            author_1['Movie_more_6']+=1
     else:
         author_2 = newDirector(name, row, catalog)
         map.put(catalog['Directors_name'], author_2['name'], author_2, compareByKey)
@@ -110,8 +112,7 @@ def addDirector_id (catalog, row):
     if map.contains(catalog['Directors_id'],name, compareByKey):
         author_1=map.get(catalog['Directors_id'],name,compareByKey)
         lt.addLast(author_1['DirectorMovies'],row['id'])
-        if float(map.get(catalog['MovieMap_id'],row['id'],compareByKey)['vote_average'])>=6:
-            map.get(catalog['Directors_id'], name,compareByKey)['Movie_more_6']+=1
+        
     else:
         author_2 = newDirector(row['director_name'], row, catalog)
         map.put(catalog['Directors_id'], author_2['id'], author_2, compareByKey)
@@ -187,3 +188,11 @@ def get_movies_by_title(catalog, name):
     else:
         return 'No se encontro la pelicula'
 
+def get_director_info(catalog, name):
+    director= map.get(catalog['Director_name'],name,compareByKey)
+    if director:
+        num_peli= lt.size(director['DirectorMovies'])
+        vote_aver= director['sum_aver']/num_peli
+        return ('El director ', name, 'a dirigido ',str(num_peli),' con un voto promedio de ',str(vote_aver), director['DirectorMovies'])
+    else:
+        return 'No se encontro el director'

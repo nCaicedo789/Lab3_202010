@@ -147,3 +147,6 @@ def get_director_Movies(catalog, name):
 
 def get_info_movies_title(catalog, title):
     return model.get_movies_by_title(catalog, title)
+
+def get_director_info(catalog, name):
+    return model.get_director_info

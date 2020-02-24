@@ -41,7 +41,7 @@ def printMenu():
     print("1- Cargar información")
     print("2- Buscar libro por titulo")
     print("3- Buscar información de autor por nombre ...")
-    print("4- Requerimiento 3 ...")
+    print("4- informacion por director")
     print('5- # de peliculas con votacion mayor a 6 por director ')
     print('6- info by movie tlitle')
     print("0- Salir")
@@ -107,7 +107,7 @@ while True:
 
 
     elif int(inputs[0])==4:
-        label = input (" ")
+        director = input ("Ingrese el nombre del director  ")
         pass
     else:
         sys.exit(0)

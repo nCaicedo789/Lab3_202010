@@ -89,7 +89,7 @@ while True:
         if respuesta == None:
             print('Director No encontrado')
         else:
-            print('El director ',director, 'tiene ',str(repuesta),'peliculas con votacion mayor o igual a 6.')
+            print('El director ',director, 'tiene ',str(respuesta),'peliculas con votacion mayor o igual a 6.')
 
     elif int(inputs[0])==3:
         authorName = input("Nombre del autor a buscar: ")

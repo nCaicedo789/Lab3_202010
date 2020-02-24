@@ -108,7 +108,7 @@ while True:
 
     elif int(inputs[0])==4:
         director = input ("Ingrese el nombre del director  ")
-        pass
+        print(controller.get_director_info(catalog, director))
     else:
         sys.exit(0)
 sys.exit(0)

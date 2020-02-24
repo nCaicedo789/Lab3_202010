@@ -140,13 +140,14 @@ def getAuthorInfo(catalog, authorName):
         return None    
 
 def get_director_Movies(catalog, name):
-    if map.contains(catalog['Directors'],name, model.compareByKey):
-        return model.get_movies_by_director(catalog, name)
-    else: 
+    director= model.get_movies_by_director(catalog, name)
+    if director:
+        return director
+    else:
         return None
 
 def get_info_movies_title(catalog, title):
     return model.get_movies_by_title(catalog, title)
 
 def get_director_info(catalog, name):
-    return model.get_director_info
+    return model.get_director_info(catalog, name)

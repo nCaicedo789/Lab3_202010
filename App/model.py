@@ -184,7 +184,7 @@ def get_movies_by_title(catalog, name):
         votos_totales= x['vote_count']
         director_id= x['id']
         director= map.get(catalog['Directors_id'],director_id, compareByKey)['name']
-        return ('El numero de votos es: ',str(votos_totales),'/nEl promedio de votos es: ',str(vote),'/nEl director de la pelicula es: ',str(director))
+        return ('El numero de votos es: ',str(votos_totales),'\nEl promedio de votos es: ',str(vote),'\nEl director de la pelicula es: ',str(director))
     else:
         return 'No se encontro la pelicula'
 
@@ -193,6 +193,6 @@ def get_director_info(catalog, name):
     if director:
         num_peli= lt.size(director['DirectorMovies'])
         vote_aver= director['sum_aver']/num_peli
-        return ('El director ', name, 'a dirigido ',str(num_peli),' con un voto promedio de ',str(vote_aver), director['DirectorMovies'])
+        return ('El director ', name, 'a dirigido ',str(num_peli),' con un voto promedio de ',str(vote_aver),' las peliculas del director son:\n' director['DirectorMovies'])
     else:
         return 'No se encontro el director'

@@ -113,7 +113,7 @@ def addDirector_id (catalog, row):
         if float(map.get(catalog['MovieMap_id'],row['id'],compareByKey)['vote_average'])>=6:
             map.get(catalog['Directors_id'], name,compareByKey)['Movie_more_6']+=1
     else:
-        author_2 = newDirector(name, row, catalog)
+        author_2 = newDirector(row['director_name'], row, catalog)
         map.put(catalog['Directors_id'], author_2['id'], author_2, compareByKey)
 
 '''def newActor (name, row, catalog):
@@ -182,7 +182,7 @@ def get_movies_by_title(catalog, name):
         vote=x['vote_average']
         votos_totales= x['vote_count']
         director_id= x['id']
-        director= map.get(catalog['Directors_id'],director_id, compareByKey)
+        director= map.get(catalog['Directors_id'],director_id, compareByKey)['name']
         return ('El numero de votos es: ',str(votos_totales),'/nEl promedio de votos es: ',str(vote),'/nEl director de la pelicula es: ',str(director))
     else:
         return 'No se encontro la pelicula'

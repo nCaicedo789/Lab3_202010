@@ -189,7 +189,7 @@ def get_movies_by_title(catalog, name):
         return 'No se encontro la pelicula'
 
 def get_director_info(catalog, name):
-    director= map.get(catalog['Director_name'],name,compareByKey)
+    director= map.get(catalog['Directors_name'],name,compareByKey)
     if director:
         num_peli= lt.size(director['DirectorMovies'])
         vote_aver= director['sum_aver']/num_peli

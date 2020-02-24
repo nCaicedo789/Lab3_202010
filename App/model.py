@@ -193,6 +193,10 @@ def get_director_info(catalog, name):
     if director:
         num_peli= lt.size(director['DirectorMovies'])
         vote_aver= director['sum_aver']/num_peli
-        return ('El director ', name, 'a dirigido ',str(num_peli),' con un voto promedio de ',str(vote_aver),' las peliculas del director son:\n', director['DirectorMovies'])
+        peliculas=[]
+        for i in range (1, num_peli+1):
+            id=lt.getElement(director['DirectorMovies'],i)
+            peliculas.append(map.get(catalog['MovieMap_id'],id, compareByKey))            
+        return ('El director ', name, 'a dirigido ',str(num_peli),' con un voto promedio de ',str(vote_aver),' las peliculas del director son:\n', str(peliculas))
     else:
         return 'No se encontro el director'

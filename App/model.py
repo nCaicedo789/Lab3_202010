@@ -42,7 +42,8 @@ def newCatalog():
     catalog['MovieList'] = lt.newList("ARRAY_LIST")
     catalog['MovieMap_title'] = map.newMap (164531, maptype='CHAINING')#329044 books
     catalog['MovieMap_id'] = map.newMap (164531, maptype='CHAINING')#329044 books
-    catalog['Directors'] = map.newMap (45767, maptype='CHAINING') #85929 authors
+    catalog['Directors_name'] = map.newMap (45767, maptype='CHAINING') #85929 authors
+    catalog['Directors_id'] = map.newMap (45767, maptype='CHAINING') #85929 authors
     catalog['Actors'] = map.newMap(130439,maptype='CHAINING')# 260861 actors
     return catalog
 
@@ -76,7 +77,8 @@ def newDirector (name, row, catalog):
     """
     Crea una nueva estructura para modelar un autor y sus libros
     """
-    author = {'name':"", "DirectorMovies":None,  "Movie_more_6":0}
+    author = {'name':"", "DirectorMovies":None,  "Movie_more_6":0, 'id':0}
+    author['id']= row['id']
     author ['name'] = name
     author ['DirectorMovies'] = lt.newList('SINGLE_LINKED')
     lt.addLast(author['DirectorMovies'],row['id'])
@@ -84,23 +86,60 @@ def newDirector (name, row, catalog):
         author['Movie_more_6']+=1
     return author
 
-def addDirector (catalog, row):
+def addDirector_name (catalog, row):
     """
     Adiciona un autor al map y sus libros
     """
     name= row['director_name']
     
-    if map.contains(catalog['Directors'],name, compareByKey):
-        author_1=map.get(catalog['Directors'],name,compareByKey)
+    if map.contains(catalog['Directors_name'],name, compareByKey):
+        author_1=map.get(catalog['Directors_name'],name,compareByKey)
         lt.addLast(author_1['DirectorMovies'],row['id'])
         if float(map.get(catalog['MovieMap_id'],row['id'],compareByKey)['vote_average'])>=6:
-            map.get(catalog['Directors'], name,compareByKey)['Movie_more_6']+=1
+            map.get(catalog['Directors_name'], name,compareByKey)['Movie_more_6']+=1
     else:
         author_2 = newDirector(name, row, catalog)
-        map.put(catalog['Directors'], author_2['name'], author_2, compareByKey)
+        map.put(catalog['Directors_name'], author_2['name'], author_2, compareByKey)
 
+def addDirector_id (catalog, row):
+    """
+    Adiciona un autor al map y sus libros
+    """
+    name= row['id']
+    
+    if map.contains(catalog['Directors_id'],name, compareByKey):
+        author_1=map.get(catalog['Directors_id'],name,compareByKey)
+        lt.addLast(author_1['DirectorMovies'],row['id'])
+        if float(map.get(catalog['MovieMap_id'],row['id'],compareByKey)['vote_average'])>=6:
+            map.get(catalog['Directors_id'], name,compareByKey)['Movie_more_6']+=1
+    else:
+        author_2 = newDirector(name, row, catalog)
+        map.put(catalog['Directors_id'], author_2['id'], author_2, compareByKey)
 
-# Funciones de consulta
+'''def newActor (name, row, catalog):
+    """
+    Crea una nueva estructura para modelar un autor y sus libros
+    """
+    auctor = {'name':"", "ActorMovies":None}
+    auctor ['name'] = name
+    auctor ['DirectorMovies'] = lt.newList('SINGLE_LINKED')
+    lt.addLast(auctor['ActorMovies'],row['id'])
+    return author
+def addActor (catalog, row):
+    """
+    Adiciona un autor al map y sus libros
+    """
+    name= row['actor1_name']
+    
+    if map.contains(catalog['Actors'],name, compareByKey):
+        author_1=map.get(catalog['Actors'],name,compareByKey)
+        lt.addLast(author_1['ActorMovies'],row['id'])
+        
+    else:
+        author_2 = newActor(name, row, catalog)
+        map.put(catalog['Actors'], author_2['name'], author_2, compareByKey)
+
+# Funciones de consulta'''
 
 
 def getBookInList (catalog, bookTitle):
@@ -135,4 +174,13 @@ def compareByTitle(bookTitle, element):
     return  (bookTitle == element['title'] )
 
 def get_movies_by_director(catalog, name):
-    return map.get(catalog,name, compareByKey)['Movie_more_6']
+    return map.get(catalog['Directors'],name, compareByKey)['Movie_more_6']
+
+def get_movies_by_title(catalog, name):
+    x= map.get(catalog['MovieMap_title'],name, compareByKey)
+    if x:
+        vote=x['vote_average']
+        votos_totales= x['vote_count']
+        director_id= x['id']
+        director= map.get(catalog['Directors_id'],director_id, compareByKey)
+

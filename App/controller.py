@@ -93,7 +93,8 @@ def loadDirector (catalog, sep=','):
         spamreader = csv.DictReader(csvfile, dialect=dialect)
         for row in spamreader: 
             # Se adiciona el libro a la lista de libros
-            model.addDirector(catalog, row)
+            model.addDirector_name(catalog, row)
+            model.addDirector_id(catalog,row)
     t1_stop = process_time() #tiempo final
     print("Tiempo de ejecución carga libros:",t1_stop-t1_start," segundos")
 
@@ -140,6 +141,6 @@ def getAuthorInfo(catalog, authorName):
 
 def get_director_Movies(catalog, name):
     if map.contains(catalog['Directors'],name, model.compareByKey):
-        return model.get_movies_by_director(catalog['Directors'], name)
+        return model.get_movies_by_director(catalog, name)
     else: 
         return None

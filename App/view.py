@@ -86,7 +86,7 @@ while True:
     elif int(inputs[0])==5:
         director= input('Ingrese el nombre del Director:\n')  
         respuesta= controller.get_director_Movies(catalog, director)
-        if repuesta == None:
+        if respuesta == None:
             print('Director No encontrado')
         else:
             print('El director ',director, 'tiene ',str(repuesta),'peliculas con votacion mayor o igual a 6.')

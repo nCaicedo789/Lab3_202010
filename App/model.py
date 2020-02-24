@@ -135,4 +135,4 @@ def compareByTitle(bookTitle, element):
     return  (bookTitle == element['title'] )
 
 def get_movies_by_director(catalog, name):
-    return map.get(catalog['Directors'],name, compareByKey)['Movie_more_6']
+    return map.get(catalog,name, compareByKey)['Movie_more_6']

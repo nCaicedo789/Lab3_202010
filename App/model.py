@@ -193,6 +193,6 @@ def get_director_info(catalog, name):
     if director:
         num_peli= lt.size(director['DirectorMovies'])
         vote_aver= director['sum_aver']/num_peli
-        return ('El director ', name, 'a dirigido ',str(num_peli),' con un voto promedio de ',str(vote_aver),' las peliculas del director son:\n' director['DirectorMovies'])
+        return ('El director ', name, 'a dirigido ',str(num_peli),' con un voto promedio de ',str(vote_aver),' las peliculas del director son:\n', director['DirectorMovies'])
     else:
         return 'No se encontro el director'

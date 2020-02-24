@@ -41,9 +41,9 @@ def printMenu():
     print("1- Cargar información")
     print("2- Buscar libro por titulo")
     print("3- Buscar información de autor por nombre ...")
-    print("4- informacion por director")
-    print('5- # de peliculas con votacion mayor a 6 por director ')
-    print('6- info by movie tlitle')
+    print("4- informacion por director(requerimiento 3)")
+    print('5- # de peliculas con votacion mayor a 6 por director (requerimeinto 1) ')
+    print('6- info by movie tlitle (requerieminto 2)')
     print("0- Salir")
 
 

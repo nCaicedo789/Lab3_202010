@@ -73,7 +73,8 @@ while True:
         print ('Mapa peliculas cargados: ' + str(map.size(catalog['MovieMap_title'])))
         print ('Lista peliculas cargados: ' + str(lt.size(catalog['MovieList'])))
         print ('Actores cargados: ' + str(map.size(catalog['Actors'])))
-        print ('Directores cargados: ' + str(map.size(catalog['Directors'])))
+        print ('Directores cargados: ' + str(map.size(catalog['Directors_id'])))
+        print ('Directores cargados: ' + str(map.size(catalog['Directors_name'])))
         
         
     elif int(inputs[0])==2:

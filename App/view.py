@@ -43,6 +43,7 @@ def printMenu():
     print("3- Buscar información de autor por nombre ...")
     print("4- Requerimiento 3 ...")
     print('5- # de peliculas con votacion mayor a 6 por director ')
+    print('6- info by movie tlitle')
     print("0- Salir")
 
 
@@ -99,7 +100,10 @@ while True:
             print("Libros del autor",authorName,":",lt.size(author['authorBooks']))
             print("Promedio de Votación: ",authorName,(author['sum_average_rating']/lt.size(author['authorBooks'])))
         else:
-            print("Autor No encontrado")    
+            print("Autor No encontrado")  
+    elif int(inputs[0])==6: 
+        title= input('Nombre de la pelicula:/n')
+        print(controller.get_info_movies_title(catalog, title)) 
 
 
     elif int(inputs[0])==4:

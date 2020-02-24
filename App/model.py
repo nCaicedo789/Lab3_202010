@@ -43,7 +43,7 @@ def newCatalog():
     catalog['MovieMap_title'] = map.newMap (164531, maptype='CHAINING')#329044 books
     catalog['MovieMap_id'] = map.newMap (164531, maptype='CHAINING')#329044 books
     catalog['Directors_name'] = map.newMap (45767, maptype='CHAINING') #85929 authors
-    catalog['Directors_id'] = map.newMap (45767, maptype='CHAINING') #85929 authors
+    catalog['Directors_id'] = map.newMap (164531, maptype='CHAINING') #85929 authors
     catalog['Actors'] = map.newMap(130439,maptype='CHAINING')# 260861 actors
     return catalog
 
@@ -183,4 +183,7 @@ def get_movies_by_title(catalog, name):
         votos_totales= x['vote_count']
         director_id= x['id']
         director= map.get(catalog['Directors_id'],director_id, compareByKey)
+        return ('El numero de votos es: ',str(votos_totales),'/nEl promedio de votos es: ',str(vote),'/nEl director de la pelicula es: ',str(director))
+    else:
+        return 'No se encontro la pelicula'
 

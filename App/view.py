@@ -42,6 +42,7 @@ def printMenu():
     print("2- Buscar libro por titulo")
     print("3- Buscar información de autor por nombre ...")
     print("4- Requerimiento 3 ...")
+    print('5- # de peliculas con votacion mayor a 6 por director ')
     print("0- Salir")
 
 
@@ -82,6 +83,13 @@ while True:
             print("Libro encontrado:",book['title'],",Rating:",book['average_rating'])
         else:
             print("Libro No encontrado")    
+    elif int(inputs[0])==5:
+        director= input('Ingrese el nombre del Director:\n')  
+        respuesta= controller.get_director_Movies(catalog, director)
+        if repuesta == None:
+            print('Director No encontrado')
+        else:
+            print('El director ',director, 'tiene ',str(repuesta),'peliculas con votacion mayor o igual a 6.')
 
     elif int(inputs[0])==3:
         authorName = input("Nombre del autor a buscar: ")

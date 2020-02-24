@@ -77,7 +77,7 @@ def newDirector (name, row, catalog):
     Crea una nueva estructura para modelar un autor y sus libros
     """
     author = {'name':"", "DirectorMovies":None,  "Movie_more_6":0}
-    author ['director_name'] = name
+    author ['name'] = name
     author ['DirectorMovies'] = lt.newList('SINGLE_LINKED')
     lt.addLast(author['DirectorMovies'],row['id'])
     if float(map.get(catalog['MovieMap_id'],row['id'],compareByKey)['vote_average'])>=6:
@@ -90,7 +90,7 @@ def addDirector (catalog, row):
     """
     name= row['director_name']
     authors = catalog['Directors']
-    if name== map.contains(catalog['Directors'],name, compareByKey):
+    if map.contains(catalog['Directors'],name, compareByKey):
         author=map.get(authors,name,compareByKey)
         lt.addLast(author['DirectorMovies'],row['id'])
         if float(map.get(catalog['MovieMap_id'],row['id'],compareByKey)['vote_average'])>=6:
@@ -133,3 +133,6 @@ def compareByKey (key, element):
 
 def compareByTitle(bookTitle, element):
     return  (bookTitle == element['title'] )
+
+def get_movies_by_director(catalog, name):
+    return map.get(catalog['Directors'],name, compareByKey)['Movie_more_6']

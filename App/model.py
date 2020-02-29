@@ -124,7 +124,7 @@ def newActor (name, row, catalog):
     """
     auctor = {'name':"", "ActorMovies":None}
     auctor ['name'] = name
-    auctor ['DirectorMovies'] = lt.newList('SINGLE_LINKED')
+    auctor ['ActorMovies'] = lt.newList('SINGLE_LINKED')
     lt.addLast(auctor['ActorMovies'],row['id'])
     return author
 def addActor (catalog, row):

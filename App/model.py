@@ -122,11 +122,11 @@ def newActor (name, row, catalog):
     """
     Crea una nueva estructura para modelar un autor y sus libros
     """
-    auctor = {'name':"", "ActorMovies":None}
-    auctor ['name'] = name
-    auctor ['ActorMovies'] = lt.newList('SINGLE_LINKED')
-    lt.addLast(auctor['ActorMovies'],row['id'])
-    return author
+    actor = {'name':"", "ActorMovies":None}
+    actor ['name'] = name
+    actor ['ActorMovies'] = lt.newList('SINGLE_LINKED')
+    lt.addLast(actor['ActorMovies'],row['id'])
+    return actor
 def addActor (catalog, row):
     """
     Adiciona un autor al map y sus libros

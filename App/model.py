@@ -52,7 +52,8 @@ def newMovie (row):
     """
     Crea una nueva estructura para almacenar los actores de una pelicula 
     """
-    book = {"id": row['id'], "title":row['title'], "vote_average":row['vote_average'], "vote_count":row['vote_count']}
+    x= row['genres'].split('|')
+    book = {"id": row['id'], "title":row['title'], "vote_average":row['vote_average'], "vote_count":row['vote_count'], 'genero':x}
     return book
 
 def addMovieList (catalog, row):
@@ -117,7 +118,7 @@ def addDirector_id (catalog, row):
         author_2 = newDirector(row['director_name'], row, catalog)
         map.put(catalog['Directors_id'], author_2['id'], author_2, compareByKey)
 
-'''def newActor (name, row, catalog):
+def newActor (name, row, catalog):
     """
     Crea una nueva estructura para modelar un autor y sus libros
     """
@@ -130,17 +131,20 @@ def addActor (catalog, row):
     """
     Adiciona un autor al map y sus libros
     """
-    name= row['actor1_name']
+    actors=['actor1_name','actor2_name','actor3_name','actor4_name','actor5_name']
+    for x in actors:
+        name= row[x]
+        if name:
     
-    if map.contains(catalog['Actors'],name, compareByKey):
-        author_1=map.get(catalog['Actors'],name,compareByKey)
-        lt.addLast(author_1['ActorMovies'],row['id'])
+            if map.contains(catalog['Actors'],name, compareByKey):
+                author_1=map.get(catalog['Actors'],name,compareByKey)
+                lt.addLast(author_1['ActorMovies'],row['id'])
         
-    else:
-        author_2 = newActor(name, row, catalog)
-        map.put(catalog['Actors'], author_2['name'], author_2, compareByKey)
+            else:
+                author_2 = newActor(name, row, catalog)
+                map.put(catalog['Actors'], author_2['name'], author_2, compareByKey)
 
-# Funciones de consulta'''
+# Funciones de consulta
 
 
 def getBookInList (catalog, bookTitle):

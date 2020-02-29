@@ -79,7 +79,7 @@ def loadBooks (catalog, sep=','):
     t1_stop = process_time() #tiempo final
     print("Tiempo de ejecución carga libros:",t1_stop-t1_start," segundos") 
 
-def loadDirector (catalog, sep=','):
+def loadDirector_actor (catalog, sep=','):
     """
     Carga los libros del archivo.  Por cada libro se toman sus autores y por 
     cada uno de ellos, se crea en la lista de autores, a dicho autor y una
@@ -95,6 +95,7 @@ def loadDirector (catalog, sep=','):
             # Se adiciona el libro a la lista de libros
             model.addDirector_name(catalog, row)
             model.addDirector_id(catalog,row)
+            model.addActor(catalog, row)
     t1_stop = process_time() #tiempo final
     print("Tiempo de ejecución carga libros:",t1_stop-t1_start," segundos")
 
@@ -115,7 +116,7 @@ def loadData (catalog):
     estructura de datos
     """
     loadBooks(catalog)
-    loadDirector(catalog)
+    loadDirector_actor(catalog)
     
 
 # Funciones llamadas desde la vista y enviadas al modelo

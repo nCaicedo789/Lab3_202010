@@ -39,11 +39,11 @@ operación solicitada
 def printMenu():
     print("Bienvenido al Laboratorio 3")
     print("1- Cargar información")
-    print("2- Buscar libro por titulo")
+    print("2- Buscar libro por título")
     print("3- Buscar información de autor por nombre ...")
-    print("4- informacion por director(requerimiento 3)")
-    print('5- # de peliculas con votacion mayor a 6 por director (requerimeinto 1) ')
-    print('6- info by movie tlitle (requerieminto 2)')
+    print("4- Información por director(requerimiento 3)")
+    print('5- Número de peliculas con votacion mayor a 6 por director (requerimeinto 1) ')
+    print('6- Información por título (requerieminto 2)')
     print("0- Salir")
 
 

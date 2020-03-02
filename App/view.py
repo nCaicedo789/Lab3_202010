@@ -109,12 +109,13 @@ while True:
 
 
     elif int(inputs[0])==4:
-        director = input ("Ingrese el nombre del director  ")
+        director = input ("Ingrese el nombre del director: ")
         print(controller.get_director_info(catalog, director))
 
     elif int(inputs[0])==7:
         actor = input("Ingrese el nombre del actor a buscar: ")
-        print(controller.get_actor_Movies(catalog, actor))
+        resultado = controller.get_actor_Movies(catalog, actor)
+        print(actor+" ha actuado en " + str(resultado['size']) + " películas.")
 
     elif int(input[0])==8:
         genero = input("Ingrese el género a buscar: ")

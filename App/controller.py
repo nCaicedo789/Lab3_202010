@@ -155,7 +155,10 @@ def get_director_info(catalog, name):
 
 def get_actor_Movies(catalog, name):
     actor = model.get_movies_by_actor(catalog, name)
-    if actor:
-        return actor
-    else:
-        return None
+    q=actor['first']
+    while q is not None:
+        id= q['info']
+        print(id)
+        q=q['next']
+
+    

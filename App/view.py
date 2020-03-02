@@ -44,6 +44,8 @@ def printMenu():
     print("4- Información por director(requerimiento 3)")
     print('5- Número de peliculas con votacion mayor a 6 por director (requerimeinto 1) ')
     print('6- Información por título (requerieminto 2)')
+    print("7- Información por actor (Req 4)")
+    print("8- Información por género (Req 5)")
     print("0- Salir")
 
 
@@ -76,7 +78,7 @@ while True:
         print ('Actores cargados: ' + str(map.size(catalog['Actors'])))
         print ('Directores_id cargados: ' + str(map.size(catalog['Directors_id'])))
         print ('Directores cargados_name: ' + str(map.size(catalog['Directors_name'])))
-        
+        print(catalog['Actors']['table']['elements'][0])
         
     elif int(inputs[0])==2:
         bookTitle = input("Nombre del libro a buscar: ")
@@ -109,6 +111,13 @@ while True:
     elif int(inputs[0])==4:
         director = input ("Ingrese el nombre del director  ")
         print(controller.get_director_info(catalog, director))
+
+    elif int(inputs[0])==7:
+        actor = input("Ingrese el nombre del actor a buscar: ")
+
+    elif int(input[0])==8:
+        genero = input("Ingrese el género a buscar: ")
+
     else:
         sys.exit(0)
 sys.exit(0)

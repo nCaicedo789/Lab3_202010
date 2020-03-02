@@ -37,7 +37,7 @@ operación solicitada
 
 
 def printMenu():
-    print("Bienvenido al Laboratorio 3")
+    print("Bienvenido al Reto 2")
     print("1- Cargar información")
     print("2- Buscar libro por título")
     print("3- Buscar información de autor por nombre ...")
@@ -114,8 +114,14 @@ while True:
 
     elif int(inputs[0])==7:
         actor = input("Ingrese el nombre del actor a buscar: ")
-        resultado = controller.get_actor_Movies(catalog, actor)
-        print(actor+" ha actuado en " + str(resultado['size']) + " películas.")
+        resultado = controller.get_actor_Amount(catalog, actor)
+        print(actor+" ha actuado en " + str(resultado) + " películas.")
+        print(actor+' ha actuado en las siguientes películas:\n')
+        peliculas, vote = controller.get_actor_movies(catalog, actor)
+        for i in peliculas:
+            print (i)
+        print("\nEl promedio de votos para "+actor+" es: "+str(round(vote, 2)+"\n")
+        
 
     elif int(input[0])==8:
         genero = input("Ingrese el género a buscar: ")

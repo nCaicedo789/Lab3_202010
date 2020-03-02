@@ -153,12 +153,23 @@ def get_info_movies_title(catalog, title):
 def get_director_info(catalog, name):
     return model.get_director_info(catalog, name)
 
-def get_actor_Movies(catalog, name):
+def get_actor_Amount(catalog, name):
     actor = model.get_movies_by_actor(catalog, name)
+    
+    return actor['size']
+
+def get_actor_movies(catalog, name):
+    actor = model.get_movies_by_actor(catalog, name)
+    lista=[]
+    avg=0
     q=actor['first']
     while q is not None:
         id= q['info']
-        print(id)
+        
         q=q['next']
+        for i in range(0, len(catalog['MovieList']['elements'])):
+            if str(id) == catalog['MovieList']['elements'][i]['id']:
+                lista.append(catalog['MovieList']['elements'][i]['title'])
+                avg += float(catalog['MovieList']['elements'][i]['vote_average'])
 
-    
+    return(lista, avg/len(lista))

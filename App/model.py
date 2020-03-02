@@ -45,9 +45,18 @@ def newCatalog():
     catalog['Directors_name'] = map.newMap (45767, maptype='CHAINING') #85929 authors
     catalog['Directors_id'] = map.newMap (164531, maptype='CHAINING') #85929 authors
     catalog['Actors'] = map.newMap(130439,maptype='CHAINING')# 260861 actors
+    catalog['generos']= map.newMap.(130439,maptype='CHAINING')
     return catalog
 
-
+def new_gen(gen):
+    return {'genero':gen, 'peliculas':0}
+def add_gen(catalog, row):
+    generos= catalog['generos']
+    if map.contains(generos, row['genres'],compareByKey):
+        map.get(generos,row['genres'],compareByKey)['peliculas']+=1
+    else:
+        x=new_gen(row['genres'])
+        map.put(generos,row['genres'],x, compareByKey)
 def newMovie (row):
     """
     Crea una nueva estructura para almacenar los actores de una pelicula 

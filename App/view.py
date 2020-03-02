@@ -78,7 +78,7 @@ while True:
         print ('Actores cargados: ' + str(map.size(catalog['Actors'])))
         print ('Directores_id cargados: ' + str(map.size(catalog['Directors_id'])))
         print ('Directores cargados_name: ' + str(map.size(catalog['Directors_name'])))
-        print(catalog['Actors']['table']['elements'][1])
+        
         
     elif int(inputs[0])==2:
         bookTitle = input("Nombre del libro a buscar: ")
@@ -114,6 +114,7 @@ while True:
 
     elif int(inputs[0])==7:
         actor = input("Ingrese el nombre del actor a buscar: ")
+        print(controller.get_actor_Movies(catalog, actor))
 
     elif int(input[0])==8:
         genero = input("Ingrese el género a buscar: ")

@@ -44,6 +44,8 @@ def printMenu():
     print("4- informacion por director(requerimiento 3)")
     print('5- # de peliculas con votacion mayor a 6 por director (requerimeinto 1) ')
     print('6- info by movie tlitle (requerieminto 2)')
+    print('7- info actors requerimiento 4')
+    print('8- info generos requeriemiento 5')
     print("0- Salir")
 
 

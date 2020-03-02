@@ -45,7 +45,7 @@ def newCatalog():
     catalog['Directors_name'] = map.newMap (45767, maptype='CHAINING') #85929 authors
     catalog['Directors_id'] = map.newMap (164531, maptype='CHAINING') #85929 authors
     catalog['Actors'] = map.newMap(130439,maptype='CHAINING')# 260861 actors
-    catalog['generos']= map.newMap.(130439,maptype='CHAINING')
+    catalog['generos']= map.newMap(130439,maptype='CHAINING')
     return catalog
 
 def new_gen(gen):

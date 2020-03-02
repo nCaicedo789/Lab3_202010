@@ -78,6 +78,7 @@ while True:
         print ('Actores cargados: ' + str(map.size(catalog['Actors'])))
         print ('Directores_id cargados: ' + str(map.size(catalog['Directors_id'])))
         print ('Directores cargados_name: ' + str(map.size(catalog['Directors_name'])))
+        print ('generos cargados_name: ' + str(map.size(catalog['generos'])))
         
         
     elif int(inputs[0])==2:

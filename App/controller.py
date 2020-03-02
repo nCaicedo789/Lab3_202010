@@ -167,3 +167,10 @@ def get_generos(catalog,gen):
         return 'No se encorntro el genero'
     else: 
         return str('El genero tiene ', str(x), 'peliculas asociadas')
+    q=actor['first']
+    while q is not None:
+        id= q['info']
+        print(id)
+        q=q['next']
+
+    

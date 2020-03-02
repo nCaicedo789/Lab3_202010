@@ -167,12 +167,7 @@ def get_actor_Movies(catalog, name):
         q=q['next']
 
 def get_generos(catalog,gen):
-    x =model.get_generos(catalog,gen)
-
-    if x== 0:
-        return 'No se encorntro el genero'
-    else: 
-        return str('El genero tiene ', str(x), 'peliculas asociadas')
+    return model.get_generos(catalog, gen)
     
 
     

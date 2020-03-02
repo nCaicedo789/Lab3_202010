@@ -45,7 +45,7 @@ def newCatalog():
     catalog['Directors_name'] = map.newMap (45767, maptype='CHAINING') #85929 authors
     catalog['Directors_id'] = map.newMap (164531, maptype='CHAINING') #85929 authors
     catalog['Actors'] = map.newMap(130439,maptype='CHAINING')# 260861 actors
-    catalog['generos']= map.newMap(130439,maptype='CHAINING')
+    catalog['generos']= map.newMap(13,maptype='CHAINING')
     return catalog
 
 def new_gen(gen):
@@ -223,15 +223,13 @@ def get_movies_by_actor(catalog, name):
     return map.get(catalog['Actors'], name, compareByKey)["ActorMovies"]
 
 def get_generos(catalog, gen):
-    x= map.keySet(catalog['MovieMap_id'])
-    numero=0
-    for j in range (1, lt.size(x)+1):
-        elemento= lt.getElement(x, j)
-        generos= map.get(catalog['MovieMap_id'], elemento, compareByKey)['genero']
-        for i in generos:
-            if i == gen:
-                numero+=1
-    return numero
+    genero= map.get(catalog['generos'],gen, compareByKey)
+    if genero:
+        numero= genero['peliculas']
+        return ('El genero ', gen, 'tiene ', str(numero), 'peliculas relacionadas')
+    else:
+        return 'No se encontro el genero'
+
 
 
 

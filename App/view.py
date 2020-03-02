@@ -109,6 +109,10 @@ while True:
     elif int(inputs[0])==4:
         director = input ("Ingrese el nombre del director  ")
         print(controller.get_director_info(catalog, director))
+
+    elif int(inputs[0])==8:
+        genero = input ("Ingrese el nombre exacto del genero  ")
+        print(controller.get_generos(catalog, genero))
     else:
         sys.exit(0)
 sys.exit(0)

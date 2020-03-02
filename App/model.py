@@ -204,4 +204,11 @@ def get_director_info(catalog, name):
         return ('El director ', name, 'a dirigido ',str(num_peli),' peliculas con un voto promedio de ',str(vote_aver),' las peliculas del director son:\n', str(peliculas))
     else:
         return 'No se encontro el director'
+<<<<<<< HEAD
         
+=======
+
+
+def get_movies_by_actor(catalog, name):
+    return map.get(catalog['Actors'], name, compareByKey)["ActorMovies"]
+>>>>>>> 880b7c6839f1759750a819a1b4163890c55be5dd

@@ -77,7 +77,7 @@ def loadBooks (catalog, sep=','):
             #for author in authors:
                 #model.addAuthor (catalog, author.strip(), row)
     t1_stop = process_time() #tiempo final
-    print("Tiempo de ejecución carga libros:",t1_stop-t1_start," segundos") 
+    print("Tiempo de ejecución carga películas:",t1_stop-t1_start," segundos") 
 
 def loadDirector_actor (catalog, sep=','):
     """
@@ -97,7 +97,7 @@ def loadDirector_actor (catalog, sep=','):
             model.addDirector_id(catalog,row)
             model.addActor(catalog, row)
     t1_stop = process_time() #tiempo final
-    print("Tiempo de ejecución carga libros:",t1_stop-t1_start," segundos")
+    print("Tiempo de ejecución carga películas:",t1_stop-t1_start," segundos")
 
 
 
@@ -152,3 +152,18 @@ def get_info_movies_title(catalog, title):
 
 def get_director_info(catalog, name):
     return model.get_director_info(catalog, name)
+
+def get_actor_Movies(catalog, name):
+    actor = model.get_movies_by_actor(catalog, name)
+    if actor:
+        return actor
+    else:
+        return None
+
+def get_generos(catalog,gen):
+    x =model.get_generos(catalog,gen)
+
+    if x== 0:
+        return 'No se encorntro el genero'
+    else: 
+        return str('El genero tiene ', str(x), 'peliculas asociadas')

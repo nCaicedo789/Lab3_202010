@@ -70,6 +70,7 @@ def loadBooks (catalog, sep=','):
             model.addMovieList(catalog, row)
             # Se adiciona el libro al mapa de libros (key=title)
             model.addMovieMap(catalog, row)
+            model.add_gen(catalog, row)
             # Se obtienen los autores del libro
             #authors = row['authors'].split(",")
             # Cada autor, se crea en la lista de autores del catalogo, y se 
@@ -177,10 +178,14 @@ def get_actor_movies(catalog, name):
 
     return(lista, avg/len(lista))
 
-    def get_generos(catalog,gen):
+def get_generos(catalog,gen):
     x =model.get_generos(catalog,gen)
 
     if x== 0:
         return 'No se encorntro el genero'
     else: 
         return str('El genero tiene ', str(x), 'peliculas asociadas')
+    
+    
+
+    

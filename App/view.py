@@ -40,10 +40,10 @@ def printMenu():
     print("Bienvenido al Reto 2")
     print("1- Cargar información")
     print("2- Buscar libro por titulo")
-    print("3- Buscar información de autor por nombre ...")
-    print("4- informacion por director(requerimiento 3)")
-    print('5- # de peliculas con votacion mayor a 6 por director (requerimeinto 1) ')
-    print('6- info by movie tlitle (requerieminto 2)')
+    print("3- Buscar información de autor por nombre")
+    print("4- Información por director(requerimiento 3)")
+    print('5- Número de peliculas con votacion mayor a 6 por director (requerimeinto 1) ')
+    print('6- Información by movie tlitle (requerieminto 2)')
     print("7- Información por actor(Req4)")
     print("8- Información por género(Req5)")
     print("0- Salir")
@@ -78,6 +78,7 @@ while True:
         print ('Actores cargados: ' + str(map.size(catalog['Actors'])))
         print ('Directores_id cargados: ' + str(map.size(catalog['Directors_id'])))
         print ('Directores cargados_name: ' + str(map.size(catalog['Directors_name'])))
+        print ('generos cargados: ' + str(map.size(catalog['generos'])))
         
         
     elif int(inputs[0])==2:
@@ -126,6 +127,9 @@ while True:
             print (i)
         print("\nEl promedio de votos para "+actor+" es: "+str(round(vote, 2)+"\n")
         
+        
+
+
     else:
         sys.exit(0)
 sys.exit(0)

@@ -45,6 +45,7 @@ def newCatalog():
     catalog['Directors_name'] = map.newMap (45767, maptype='CHAINING') #85929 authors
     catalog['Directors_id'] = map.newMap (164531, maptype='CHAINING') #85929 authors
     catalog['Actors'] = map.newMap(130439,maptype='CHAINING')# 260861 actors
+    catalog['generos'] = map.newMap(130439,maptype='CHAINING')
     return catalog
 
 
@@ -55,6 +56,8 @@ def newMovie (row):
     x= row['genres'].split('|')
     book = {"id": row['id'], "title":row['title'], "vote_average":row['vote_average'], "vote_count":row['vote_count'], 'genero':x}
     return book
+
+
 
 def addMovieList (catalog, row):
     """
@@ -204,11 +207,24 @@ def get_director_info(catalog, name):
         return ('El director ', name, 'a dirigido ',str(num_peli),' peliculas con un voto promedio de ',str(vote_aver),' las peliculas del director son:\n', str(peliculas))
     else:
         return 'No se encontro el director'
-<<<<<<< HEAD
-        
-=======
 
 
 def get_movies_by_actor(catalog, name):
     return map.get(catalog['Actors'], name, compareByKey)["ActorMovies"]
->>>>>>> 880b7c6839f1759750a819a1b4163890c55be5dd
+
+def get_generos(catalog, gen):
+    x= map.keySet(catalog['MovieMap_id'])
+    numero=0
+    for j in range (1, lt.size(x)+1):
+        elemento= lt.getElement(x, j)
+        genros= map.get(catalog['MovieMap_id'], elemento, compareByKey)['genero']
+        for i in generos:
+            if i == gen:
+                numero+=1
+    return numero
+
+
+
+    
+
+

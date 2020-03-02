@@ -118,8 +118,6 @@ while True:
         resultado = controller.get_actor_Movies(catalog, actor)
         print(actor+" ha actuado en " + str(resultado['size']) + " películas.")
 
-    elif int(input[0])==8:
-        genero = input("Ingrese el género a buscar: ")
 
     else:
         sys.exit(0)

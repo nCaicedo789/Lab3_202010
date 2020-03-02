@@ -52,11 +52,13 @@ def new_gen(gen):
     return {'genero':gen, 'peliculas':0}
 def add_gen(catalog, row):
     generos= catalog['generos']
-    if map.contains(generos, row['genres'],compareByKey):
-        map.get(generos,row['genres'],compareByKey)['peliculas']+=1
-    else:
-        x=new_gen(row['genres'])
-        map.put(generos,row['genres'],x, compareByKey)
+    split_gen= row['genres'].split('|')
+    for i in split_gen:
+        if map.contains(generos, i,compareByKey):
+            map.get(generos,i,compareByKey)['peliculas']+=1
+        else:
+            x=new_gen(row['genres'])
+            map.put(generos,i,x, compareByKey)
 def newMovie (row):
     """
     Crea una nueva estructura para almacenar los actores de una pelicula 

@@ -78,7 +78,7 @@ while True:
         print ('Actores cargados: ' + str(map.size(catalog['Actors'])))
         print ('Directores_id cargados: ' + str(map.size(catalog['Directors_id'])))
         print ('Directores cargados_name: ' + str(map.size(catalog['Directors_name'])))
-        print(catalog['Actors']['table']['elements'][0])
+        print(catalog['Actors']['table']['elements'][1])
         
     elif int(inputs[0])==2:
         bookTitle = input("Nombre del libro a buscar: ")

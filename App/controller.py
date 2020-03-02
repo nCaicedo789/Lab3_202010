@@ -77,7 +77,7 @@ def loadBooks (catalog, sep=','):
             #for author in authors:
                 #model.addAuthor (catalog, author.strip(), row)
     t1_stop = process_time() #tiempo final
-    print("Tiempo de ejecución carga libros:",t1_stop-t1_start," segundos") 
+    print("Tiempo de ejecución carga películas:",t1_stop-t1_start," segundos") 
 
 def loadDirector_actor (catalog, sep=','):
     """
@@ -97,7 +97,7 @@ def loadDirector_actor (catalog, sep=','):
             model.addDirector_id(catalog,row)
             model.addActor(catalog, row)
     t1_stop = process_time() #tiempo final
-    print("Tiempo de ejecución carga libros:",t1_stop-t1_start," segundos")
+    print("Tiempo de ejecución carga películas:",t1_stop-t1_start," segundos")
 
 
 

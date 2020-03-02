@@ -39,13 +39,13 @@ operación solicitada
 def printMenu():
     print("Bienvenido al Reto 2")
     print("1- Cargar información")
-    print("2- Buscar libro por título")
+    print("2- Buscar libro por titulo")
     print("3- Buscar información de autor por nombre ...")
-    print("4- Información por director(requerimiento 3)")
-    print('5- Número de peliculas con votacion mayor a 6 por director (requerimeinto 1) ')
-    print('6- Información por título (requerieminto 2)')
-    print("7- Información por actor (Req 4)")
-    print("8- Información por género (Req 5)")
+    print("4- informacion por director(requerimiento 3)")
+    print('5- # de peliculas con votacion mayor a 6 por director (requerimeinto 1) ')
+    print('6- info by movie tlitle (requerieminto 2)')
+    print("7- Información por actor(Req4)")
+    print("8- Información por género(Req5)")
     print("0- Salir")
 
 
@@ -112,6 +112,10 @@ while True:
         director = input ("Ingrese el nombre del director: ")
         print(controller.get_director_info(catalog, director))
 
+    elif int(inputs[0])==8:
+        genero = input ("Ingrese el nombre exacto del genero  ")
+        print(controller.get_generos(catalog, genero))
+
     elif int(inputs[0])==7:
         actor = input("Ingrese el nombre del actor a buscar: ")
         resultado = controller.get_actor_Amount(catalog, actor)
@@ -122,10 +126,6 @@ while True:
             print (i)
         print("\nEl promedio de votos para "+actor+" es: "+str(round(vote, 2)+"\n")
         
-
-    elif int(input[0])==8:
-        genero = input("Ingrese el género a buscar: ")
-
     else:
         sys.exit(0)
 sys.exit(0)

@@ -155,8 +155,11 @@ def get_director_info(catalog, name):
 
 def get_actor_Amount(catalog, name):
     actor = model.get_movies_by_actor(catalog, name)
-    
-    return actor['size']
+    if actor:
+        return actor['size']
+    else:
+        return None
+   
 
 def get_actor_movies(catalog, name):
     actor = model.get_movies_by_actor(catalog, name)
@@ -173,3 +176,11 @@ def get_actor_movies(catalog, name):
                 avg += float(catalog['MovieList']['elements'][i]['vote_average'])
 
     return(lista, avg/len(lista))
+
+    def get_generos(catalog,gen):
+    x =model.get_generos(catalog,gen)
+
+    if x== 0:
+        return 'No se encorntro el genero'
+    else: 
+        return str('El genero tiene ', str(x), 'peliculas asociadas')
